@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+    <title>Lista de productos</title>
+<body>
+        <header th:insert="headerFooter:: header"> </header>
+
+        <a th:href="@{/presentation/producto/register(proveedorId=${session.idProveedor})}">REGISTRAR PRODUCTOS</a> <br> <br> <br>
+
+        <div class="centered">
+            <table>
+
+<!--                CREATE TABLE producto (-->
+<!--                producto_id INT NOT NULL,-->
+<!--                codigo varchar (255),-->
+<!--                nombre VARCHAR(255),-->
+<!--                descripcion TEXT,-->
+<!--                precio float,-->
+<!--                total float,-->
+<!--                usuario_id varchar(12),-->
+<!--                constraint PK_Producto primary key(producto_id),-->
+<!--                constraint FK_Producto foreign key (usuario_id) references usuario (id_usuario)-->
+<!--                );-->
+                <tr>
+                    <th>ID</th>
+                    <th>Codigo</th>
+                    <th>nombre</th>
+                    <th>descripcion</th>
+                    <th>precio</th>
+                    <th>total</th>
+                    <th>proveedor Id</th>
+
+
+                    <th>...</th>
+                </tr>
+
+                <!-- Itera sobre la lista de productos y muestra sus datos -->
+                <tr th:each="p : ${productos}">
+                    <td th:text="${ p.productoId  }"/>
+                    <td th:text="${ p.codigo  }"/>
+                    <td th:text="${p.nombre}"/>
+                    <td th:text="${p.descripcion }"/>
+                    <td th:text="${p.precio }"/>
+                    <td th:text="${p.total}"/>
+                    <td th:text ="${p.usuarioId}"/>
+                </tr>
+            </table>
+        </div>
+
+        <footer th:insert="headerFooter::footer"></footer>
+
+</body>
+</html>

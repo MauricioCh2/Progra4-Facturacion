@@ -1,0 +1,132 @@
+.header-footer {
+    background-color: lightblue;
+    color: white;
+    padding: 10px;
+    border: 50PX;
+    text-align: center;
+    font-family: cursive, sans-serif;
+    letter-spacing: 2px; /* Ajusta el espaciado entre letras */
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+}
+.registerlink{
+
+    text-decoration: none;
+    font-size: 20px;
+    font-family: cursive, sans-serif;
+    letter-spacing: 2px; /* Ajusta el espaciado entre letras */
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+}
+
+.registerlink a{
+    color: lightblue;
+    text-decoration: none;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+footer div {
+    display: inline-block;
+    margin: 0 10px;
+
+}
+
+.headerLogo {
+    display: inline-block;
+    margin-right: 10px; /* Ajusta el margen derecho */
+    vertical-align: middle; /* Alinea verticalmente */
+}
+
+.headerLogo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.logos{
+    display: inline-block;
+    margin-right: 10px; /* Ajusta el margen derecho */
+    vertical-align: middle; /* Alinea verticalmente */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+header nav div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+header nav div a {
+    color: white;
+    text-decoration: none;
+}
+
+#headerName {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+/*LOGIN STYLES*/
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh; /* Ajusta la altura al 100% del viewport */
+}
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.loginP{
+    margin-right: 10px;
+    color:lightblue;
+    font-size: 35px;
+    font-family: cursive, sans-serif;
+    letter-spacing: 2px; /* Ajusta el espaciado entre letras */
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+}
+.wrapper form {
+    background: white; /* Color de fondo del formulario */
+    padding: 50px; /* Añade un poco de espacio alrededor del formulario */
+    border-radius: 5px; /* Añade bordes redondeados al formulario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una ligera sombra alrededor del formulario */
+}
+
+.wrapper form label {
+    display: block; /* Hace que las etiquetas se muestren en bloques separados */
+    margin-bottom: 5px; /* Añade un poco de espacio entre las etiquetas */
+}
+
+.wrapper form input[type="text"],
+.wrapper form input[type="password"] {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    padding: 10px; /* Ajusta el relleno */
+    margin-bottom: 10px; /* Añade espacio entre los campos */
+    border: 1px solid #ccc; /* Añade un borde gris */
+    border-radius: 3px; /* Añade bordes redondeados */
+}
+
+.wrapper form input[type="submit"] {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    padding: 10px; /* Ajusta el relleno */
+    background: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Quita el borde */
+    border-radius: 5px; /* Añade bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background 0.3s; /* Añade una transición suave al color de fondo */
+}
+
+.wrapper form input[type="submit"]:hover {
+    background: #0056b3; /* Cambia el color de fondo al pasar por encima */
+}
+
+.links a:hover {
+    color: darkslateblue; /* Cambia el color del texto */
+}

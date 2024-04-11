@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head" >
+    <meta charset="UTF-8">
+    <title>HeaderFooter</title>
+    <link href="/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css" >
+    <link href="/css/tablestyle.css" rel="stylesheet" th:href="@{/css/tablestyle.css}" type="text/css" >
+</head>
+<body>
+<header th:fragment="header" class="header-footer">
+    <nav class="links">
+        <div>
+            <h1 id="headerName">Factura<br>Electronica</h1>
+        </div>
+        <div class="headerLogo">
+            <img th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg">
+        </div>
+        <div>
+            <a th:href="@{/presentation/proveedor/about}">Acerca de ...</a>
+        </div>
+        <th:block th:if="${session.usuario != null}">
+            <div>
+                <span>Bienvenido, </span>
+                <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
+                <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
+                <span>&nbsp;&nbsp;</span>
+                <a href="#">Facturar</a>
+                <span>&nbsp;&nbsp;</span>
+                <a href="/presentation/clientes">Clientes</a>
+                <span>&nbsp;&nbsp;</span>
+                <a href="/presentation/producto/show">Productos</a>
+                <span>&nbsp;&nbsp;</span>
+                <a href="#">Facturas</a>
+                <span>&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;</span>
+                <a href="/presentation/proveedor/logout">Logout</a>
+            </div>
+        </th:block>
+        <th:block th:unless="${session.usuario != null}">
+            <div>
+                <a href="/">Login</a>
+            </div>
+        </th:block>
+    </nav>
+</header>
+
+
+
+    <footer th:fragment="footer" class="header-footer">
+        <div><h1>@factura_electronica.com</h1></div>
+        <div class="headerLogo"><img  th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg"> </div>
+    </footer>
+
+</body>
+</html>

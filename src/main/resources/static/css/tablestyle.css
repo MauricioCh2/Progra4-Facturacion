@@ -1,0 +1,33 @@
+.centered {
+        min-height: 50vh; /* Ajusta la altura mínima para centrar */
+        /*margin-top: 50vh; !* Ajusta la distancia desde la parte superior *!*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered table {
+    width: 100%; /* Ancho de la tabla al 100% del contenedor */
+    border-collapse: collapse; /* Fusiona los bordes de las celdas */
+}
+
+.centered th, .centered td {
+    border: 1px solid lightblue; /* Borde de las celdas */
+    padding: 8px; /* Espaciado interno de las celdas */
+    text-align: left; /* Alineación del texto en las celdas */
+}
+
+.centered th {
+    background-color: lightblue; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+/*.centered {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    min-height: 80vh; !* Ajusta la altura mínima para centrar *!*/
+/*    margin-top: 10vh; !* Ajusta la distancia desde la parte superior *!*/
+/*}*/
+
+
