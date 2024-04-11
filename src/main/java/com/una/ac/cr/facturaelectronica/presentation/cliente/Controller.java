@@ -39,4 +39,20 @@ public class Controller {
         model.addAttribute("clientes", clienteService.clienteFindAllByProveedorId(idProveedor));
         return "/presentation/proveedorLogin/cliente/listarCliente";
     }
+//    @GetMapping("/presentation/cliente/findById")
+//    public String findById(Model model, @RequestParam("id") String id, HttpSession session) {
+//        String idProveedor = (String) session.getAttribute("idProveedor");
+//        model.addAttribute("cliente", clienteService.clienteFindById(id, idProveedor));
+//        return "/presentation/proveedorLogin/factura/View";
+//    }
+
+    @GetMapping("/presentation/cliente/findById")
+    public String findById(Model model, @RequestParam("clienteId") String clienteId, HttpSession session) {
+        String idProveedor = (String) session.getAttribute("idProveedor");
+        ClienteEntity cliente = clienteService.clienteFindById(clienteId, idProveedor);
+        model.addAttribute("cliente", cliente);
+        model.addAttribute("proveedorName", usuarioService.proveedorById(idProveedor).getNombre() );
+        model.addAttribute("clienteNombre", cliente != null ? cliente.getNombre() : "No se encontró el cliente");
+        return "/presentation/proveedorLogin/factura/View";
+    }
 }

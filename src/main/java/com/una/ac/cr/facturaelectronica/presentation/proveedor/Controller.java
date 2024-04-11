@@ -1,6 +1,7 @@
 package com.una.ac.cr.facturaelectronica.presentation.proveedor;
 
 import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
+import com.una.ac.cr.facturaelectronica.service.ClienteService;
 import com.una.ac.cr.facturaelectronica.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ import java.util.Optional;
 public class Controller {
     @Autowired
     private UsuarioService service;
-
+    @Autowired
+    private ClienteService clienteService;
     @GetMapping("/presentation/proveedores/show")
     public String show(Model model){
         model.addAttribute("proveedores", service.usuarioFindAll());
@@ -52,7 +54,7 @@ public class Controller {
                 session.setAttribute("usuario", proveedor);
                 session.setAttribute("idProveedor", proveedor.getIdUsuario());
                 model.addAttribute("usuario", proveedor);
-                return "/presentation/proveedorLogin/View";
+                return "redirect:/presentation/facturas/show";
             } else {
                 model.addAttribute("error", "Usuario Inactivo o Rechazado.");
                 return "index";

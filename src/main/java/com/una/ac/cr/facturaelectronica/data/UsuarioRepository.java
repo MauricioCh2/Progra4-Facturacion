@@ -1,5 +1,6 @@
 package com.una.ac.cr.facturaelectronica.data;
 
+import com.una.ac.cr.facturaelectronica.logic.ClienteEntity;
 import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,7 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> 
     UsuarioEntity findByIdUsuario(String idUsuario);
 
     List<UsuarioEntity> findByRol(String rol);
+
+
 
 }

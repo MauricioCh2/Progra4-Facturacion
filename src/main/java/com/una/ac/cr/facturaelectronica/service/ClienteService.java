@@ -22,4 +22,8 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
+    public ClienteEntity clienteFindById(String id, String usuarioId){
+        return clienteRepository.findByClienteIdAndUsuarioId(id, usuarioId);
+    }
+
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+<body>
+<header th:insert="headerFooter:: header"> </header>
+
+    <h1>Facturar</h1>
+<div class="centered">
+    <table>
+        <tr>
+            <td>Proveedor</td>
+            <td><label th:text="${proveedorName}"></label></td>
+        </tr>
+        <tr>
+            <td>Cliente</td>
+        </tr>
+        <tr>
+            <td>
+                <form th:action="@{/presentation/cliente/findById}" method="get">
+                    <input type="text" name="clienteId" id="clienteId" placeholder="Ingrese ID del cliente">
+                    <button type="submit">Buscar Cliente</button>
+                </form>
+                <label th:text="${clienteNombre}"></label>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<footer th:insert="headerFooter::footer"></footer>
+
+</body>
+</html>

@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface FacturaRepository extends JpaRepository<FacturaEntity,Integer> {
 
+
 }
