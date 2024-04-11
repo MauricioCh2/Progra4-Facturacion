@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+<tittle> PROVEEDORES </tittle>
+<body>
+<header th:insert="headerFooter:: header"> </header>
+<div class="centered">
+  <table style="border: 1px solid blue">
+<!--    CREATE TABLE usuario (-->
+<!--    id_usuario varchar(12) ,-->
+<!--    nombre VARCHAR(100),-->
+<!--    correo_electronico VARCHAR(100),-->
+<!--    contrasena VARCHAR(100),-->
+<!--    activo varchar(12), &#45;&#45; ACEP: Aceptar, RECH: Rechazar, ESP: Espera-->
+<!--    telefono integer,-->
+<!--    rol varchar(30), &#45;&#45; PROV: proveedor, ADM: administrador-->
+<!--    constraint PK_usuario primary key(id_usuario)-->
+<!--    );-->
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>CorreoElectronico</th>
+      <th>Contrasena</th>
+      <th>Activo</th>
+      <th>Telefono</th>
+
+
+      <th>...</th>
+    </tr>
+
+    <!-- Itera sobre la lista de proveedores y muestra sus datos -->
+    <tr th:each="p : ${proveedores}">
+      <td th:text="${p.idUsuario}"/>
+      <td th:text="${p.nombre}"/>
+      <td th:text="${p.correoElectronico}"/>
+      <td th:text="${p.contrasena}"/>
+      <td th:text ="${p.activo}"/>
+      <td th:text ="${p.telefono}"/>
+    </tr>
+  </table>
+</div>
+
+<footer th:insert="headerFooter::footer"></footer>
+
+</body>
+</html>

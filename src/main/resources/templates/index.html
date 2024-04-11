@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+</head>
+<body>
+<header th:insert="headerFooter:: header"> </header>
+<main class="wrapper">
+    <div class="login-container">
+        <div> <p class="loginP">Login</p> </div>
+    </div>
+    <div>
+        <form th:action="@{/presentation/proveedor/login}" method="post">
+            <label for="idProveedor">Username:</label>
+            <input type="text" id="idProveedor" name="idProveedor" placeholder="Enter your username"><br><br>
+            <label for="contrasena">Password:</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Enter your password"><br><br>
+            <input type="submit" value="Login">
+            <div th:if="${error}" class="error" th:text="${error}">Usuario o contraseña inválidos.</div>
+        </form>
+        <div class="registerlink" >
+            <p>Don't have an account? <a href="/presentation/register/show">Register</a></p>
+        </div>
+    </div>
+</main>
+
+<footer th:insert="headerFooter::footer"></footer>
+</body>
+</html>
+</html>

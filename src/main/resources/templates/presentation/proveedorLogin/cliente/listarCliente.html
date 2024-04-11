@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+    <title>Lista de clientes</title>
+<body>
+<header th:insert="headerFooter:: header"> </header>
+
+<!--<a th:href="@{/presentation/cliente/register(proveedorId=${session.getAttribute('idProveedor')})}"> AGREGAR CLIENTES </a>-->
+<a th:href="@{/presentation/cliente/register(proveedorId=${session.idProveedor})}"> AGREGAR CLIENTES </a>
+
+
+        <div class="centered">
+            <table>
+<!--                CREATE TABLE cliente (-->
+<!--                cliente_id VARCHAR(12) NOT NULL,-->
+<!--                nombre VARCHAR(255),-->
+<!--                correo_electronico VARCHAR(50),-->
+<!--                usuario_id VARCHAR(12) NOT NULL,-->
+<!--                CONSTRAINT PK_Cliente PRIMARY KEY (cliente_id),-->
+<!--                CONSTRAINT FK_Usuario FOREIGN KEY (usuario_id) REFERENCES usuario (id_usuario)-->
+<!--                );-->
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo Electronico</th>
+                    <th>proveedor Id</th>
+                    <th>...</th>
+                </tr>
+
+                <!-- Itera sobre la lista de clientes y muestra sus datos -->
+                <tr th:each="c : ${clientes}">
+                    <td th:text="${c.clienteId}"/>
+                    <td th:text="${c.nombre}"/>
+                    <td th:text="${c.correoElectronico}"/>
+                    <td th:text ="${c.usuarioId}"/>
+                </tr>
+            </table>
+        </div>
+
+<footer th:insert="headerFooter::footer"></footer>
+
+</body>
+</html>

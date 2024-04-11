@@ -1,0 +1,80 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="es" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Agregar Cliente</title>-->
+<!--    &lt;!&ndash; Agregar enlaces a los estilos de Bootstrap &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="mt-4">Agregar Cliente</h1>-->
+<!--    <form action="/presentation/cliente/add" method="post" class="mt-4">-->
+<!--        <div class="form-group">-->
+<!--            <label for="clienteId">ID del Cliente:</label>-->
+<!--            <input type="text" id="clienteId" name="clienteId" class="form-control">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="nombre">Nombre:</label>-->
+<!--            <input type="text" id="nombre" name="nombre" class="form-control">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="direccion">Dirección:</label>-->
+<!--            <input type="text" id="direccion" name="direccion" class="form-control">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="tipoCliente">Tipo de Cliente:</label>-->
+<!--            <input type="text" id="tipoCliente" name="tipoCliente" class="form-control">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="correoElectronico">Correo Electrónico:</label>-->
+<!--            <input type="email" id="correoElectronico" name="correoElectronico" class="form-control">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="proveedorId">ID de proveedor:</label>-->
+<!--            <input type="text" id="proveedorId" name="proveedorId" class="form-control">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">Agregar Cliente</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Cliente</title>
+    <!-- Agregar enlaces a los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Agregar Cliente</h1>
+    <form action="/presentation/cliente/add" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="clienteId">ID del Cliente:</label>
+            <input type="text" id="clienteId" name="clienteId" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="correoElectronico">Correo Electrónico:</label>
+            <input type="email" id="correoElectronico" name="correoElectronico" class="form-control">
+        </div>
+
+        <!-- Cambia el nombre del campo oculto para coincidir con la nueva estructura de datos -->
+        <input type="hidden" id="idUsuario" name="idUsuario" th:value="${idUsuario}" class="form-control">
+
+        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+    </form>
+</div>
+</body>
+</html>
