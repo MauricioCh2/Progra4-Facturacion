@@ -23,11 +23,20 @@ public class UsuarioService {
     public void proveedorSave(UsuarioEntity usuario){
         usuarioRepository.save(usuario);
     }
+
+    public void save(UsuarioEntity usuario){
+        usuarioRepository.save(usuario);
+    }
     public UsuarioEntity proveedorById(String id){
-      return  usuarioRepository.findByIdUsuario(id);
+        return  usuarioRepository.findByIdUsuario(id);
     }
 
     public List<UsuarioEntity> findByRol(String prov) {
         return usuarioRepository.findByRol(prov);
     }
+
+    public void proveedorUpdate(UsuarioEntity usuario){
+        usuarioRepository.save(usuario);
+    }
+
 }
