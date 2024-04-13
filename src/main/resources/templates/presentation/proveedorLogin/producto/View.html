@@ -1,40 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Producto</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Estilos personalizados */
-        body {
-            background-color: #f8f9fa;
-        }
 
-        .container {
-            margin-top: 50px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        .btn-submit {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-        }
-
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
+<header th:insert="headerFooter:: header"> </header>
 <div class="container">
     <h2 class="mb-4">Formulario de Producto</h2>
     <form th:action="@{/presentation/producto/add}" method="post">
@@ -68,6 +40,7 @@
         <button type="submit" class="btn btn-submit">Guardar Producto</button>
     </form>
 </div>
+<footer th:insert="headerFooter::footer"></footer>
 </body>
 </html>
 <!--<input type="hidden" id="proveedorId" name="proveedorId" th:value="${proveedorId}" class="form-control">-->
