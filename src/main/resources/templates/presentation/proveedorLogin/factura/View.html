@@ -55,10 +55,14 @@
                 </form>
             </td>
         </tr>
+        <tr th:if="${mensaje != null}">
+            <td th:text="${mensaje}" style="color: red;"></td>
+        </tr>
 
     </table>
 
 </div>
+
 <footer th:insert="headerFooter::footer"></footer>
 
 </body>

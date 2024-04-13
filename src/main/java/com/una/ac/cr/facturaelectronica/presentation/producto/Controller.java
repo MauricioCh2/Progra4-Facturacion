@@ -66,6 +66,9 @@ public class Controller {
         // Si el producto existe, agregarlo a la lista de productos en sesión
         if(producto != null) {
             productos.add(producto);
+        }else {
+            // Si el producto no existe, mostrar un mensaje al usuario
+            model.addAttribute("mensaje", "Producto no encontrado");
         }
 
         // Guardar la lista actualizada en la sesión
