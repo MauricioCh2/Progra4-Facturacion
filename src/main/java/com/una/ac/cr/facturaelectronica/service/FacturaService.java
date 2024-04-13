@@ -25,4 +25,7 @@ public class FacturaService {
         return facturaRepository.findById(id).get();
     }
 
+//    public FacturaEntity facturaFindAllByProveedorId(String idUsuario) {
+//        return facturaRepository.findByUsuarioId(idUsuario);
+//    }
 }

@@ -5,29 +5,60 @@
 <header th:insert="headerFooter:: header"> </header>
 
     <h1>Facturar</h1>
+<!---->
 <div class="centered">
     <table>
         <tr>
-            <td>Proveedor</td>
-            <td><label th:text="${proveedorName}"></label></td>
+            <td>Proveedor:
+                <label th:text="${session.proveedorName}"></label>
+            </td>
         </tr>
         <tr>
-            <td>Cliente</td>
-        </tr>
-        <tr>
-            <td>
+            <td> Cliente:
+                <label th:text="${session.clienteNombre}"></label>
                 <form th:action="@{/presentation/cliente/findById}" method="get">
                     <input type="text" name="clienteId" id="clienteId" placeholder="Ingrese ID del cliente">
                     <button type="submit">Buscar Cliente</button>
                 </form>
-                <label th:text="${clienteNombre}"></label>
             </td>
         </tr>
+        <tr>
+<!--                producto_id INT NOT NULL,-->
+<!--                codigo varchar (255),-->
+<!--                nombre VARCHAR(255),-->
+<!--                descripcion TEXT,-->
+<!--                precio float,-->
+<!--                total float,-->
+            <th>Cat: </th>
+            <th>Codigo: </th>
+            <th>Nomre: </th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Monto</th>
+            <th>...</th>
+        </tr>
+<!--        <tr th:if="${session.producto != null}">-->
+        <tr th:each="p : ${productos}">>
+            <td>...</td>
+            <td th:text="${p.codigo}"></td>
+            <td th:text="${p.nombre}"></td>
+            <td th:text="${p.descripcion}"></td>
+            <td th:text="${p.precio}"></td>
+            <td th:text="${p.total}"></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Codigo: </label>
+                <form th:action="@{/presentation/producto/findByCodigo}" method="get">
+                    <input type="text" name="codigoId" id="codigoId" placeholder="Codigo del producto">
+                    <button type="submit">Buscar Producto</button>
+                </form>
+            </td>
+        </tr>
+
     </table>
 
 </div>
-
-
 <footer th:insert="headerFooter::footer"></footer>
 
 </body>

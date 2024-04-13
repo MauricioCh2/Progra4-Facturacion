@@ -22,5 +22,9 @@ public class ProductoService {
         productoRepository.save(producto);
     }
 
+    public ProductoEntity findProductoById(String codigo,String id){
+        return    productoRepository.findByCodigoAndUsuarioId(codigo,id);
+    }
+
 
 }

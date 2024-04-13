@@ -50,9 +50,9 @@ public class Controller {
     public String findById(Model model, @RequestParam("clienteId") String clienteId, HttpSession session) {
         String idProveedor = (String) session.getAttribute("idProveedor");
         ClienteEntity cliente = clienteService.clienteFindById(clienteId, idProveedor);
-        model.addAttribute("cliente", cliente);
-        model.addAttribute("proveedorName", usuarioService.proveedorById(idProveedor).getNombre() );
-        model.addAttribute("clienteNombre", cliente != null ? cliente.getNombre() : "No se encontró el cliente");
+        session.setAttribute("cliente", cliente);
+        session.setAttribute("proveedorName", usuarioService.proveedorById(idProveedor).getNombre() );
+       session.setAttribute("clienteNombre", cliente != null ? cliente.getNombre() : "No se encontró el cliente");
         return "/presentation/proveedorLogin/factura/View";
     }
 }
