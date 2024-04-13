@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface FacturaRepository extends JpaRepository<FacturaEntity,Integer> {
 
+
+//    FacturaEntity findByUsuarioId(String idUsuario);
+    Iterable<FacturaEntity> findAllByCliente(String cliente);
 }
