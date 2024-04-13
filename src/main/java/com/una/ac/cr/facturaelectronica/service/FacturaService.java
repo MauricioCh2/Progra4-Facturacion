@@ -17,12 +17,19 @@ public class FacturaService {
         facturaRepository.save(factura);
     }
 
+    public Iterable<FacturaEntity> facturaFindAllByCliente(String cedula){
+        return facturaRepository.findAllByCliente(cedula);
+    }
     public Iterable<FacturaEntity> facturaFindAll(){
         return facturaRepository.findAll();
     }
 
     public FacturaEntity facturaFindById(int id){
         return facturaRepository.findById(id).get();
+    }
+
+    public void saveFactura(FacturaEntity factura) {
+        facturaRepository.save(factura);
     }
 
 //    public FacturaEntity facturaFindAllByProveedorId(String idUsuario) {

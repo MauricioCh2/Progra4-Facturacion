@@ -53,6 +53,7 @@ public class Controller {
         session.setAttribute("cliente", cliente);
         session.setAttribute("proveedorName", usuarioService.proveedorById(idProveedor).getNombre() );
        session.setAttribute("clienteNombre", cliente != null ? cliente.getNombre() : "No se encontró el cliente");
+       session.setAttribute("clienteId", clienteId);
         return "/presentation/proveedorLogin/factura/View";
     }
 }

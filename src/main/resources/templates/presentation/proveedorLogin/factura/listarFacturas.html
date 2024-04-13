@@ -4,7 +4,32 @@
 <body>
 <header th:insert="headerFooter:: header"> </header>
 <h1>LISTADO DE FACURAS</h1>
-
+<div class="centered">
+    <table>
+<!--        &#45;&#45; Tabla de Facturas-->
+<!--        CREATE TABLE factura (-->
+<!--        factura_id INT not null,-->
+<!--        fecha DATE,-->
+<!--        total float,-->
+<!--        cliente VARCHAR(12),-->
+<!--        constraint Pk_facturas primary key (factura_id),-->
+<!--        constraint Fk_facturas foreign key (cliente) references Cliente (cliente_id)-->
+<!--        );-->
+        <tr>
+            <th>ID</th>
+            <th>DATE</th>
+            <th>total</th>
+            <th>cliente Id</th>
+            <th>...</th>
+        </tr>
+        <tr th:each="f : ${facturas}">
+            <td th:text="${f.facturaId}"/>
+            <td th:text="${f.fecha}"/>
+            <td th:text="${f.total}"/>
+            <td th:text ="${f.cliente}"/>
+        </tr>
+    </table>
+</div>
 
 
 
