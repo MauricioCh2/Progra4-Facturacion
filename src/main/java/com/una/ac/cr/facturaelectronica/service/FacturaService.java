@@ -32,4 +32,8 @@ public class FacturaService {
     public Iterable<FacturaEntity> facturaFindAllByProveedorId(String idproveedor) {
         return facturaRepository.findAllByProveedor(idproveedor);
     }
+
+    public FacturaEntity getFacturaById(int id) {
+        return facturaRepository.findById(id).get();
+    }
 }

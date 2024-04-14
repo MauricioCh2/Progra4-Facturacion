@@ -1,34 +1,47 @@
 package com.una.ac.cr.facturaelectronica.logic;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
+@XmlRootElement(name = "factura")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Table(name = "factura", schema = "facturaelectronica", catalog = "")
 public class FacturaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "factura_id")
+    @XmlElement
     private int facturaId;
     @Basic
     @Column(name = "fecha")
+    @XmlElement
     private Date fecha;
     @Basic
     @Column(name = "total")
+    @XmlElement
     private Double total;
     @Basic
     @Column(name = "cantidad")
+    @XmlElement
     private Integer cantidad;
     @Basic
     @Column(name = "cliente")
+    @XmlElement
     private String cliente;
     @Basic
     @Column(name = "proveedor")
+    @XmlElement
     private String proveedor;
     @Basic
     @Column(name = "id_producto")
+    @XmlElement
     private Integer idProducto;
 
     public int getFacturaId() {

@@ -1,5 +1,6 @@
 package com.una.ac.cr.facturaelectronica.presentation.factura;
 
+import com.una.ac.cr.facturaelectronica.data.XML.FacturaXML;
 import com.una.ac.cr.facturaelectronica.logic.ClienteEntity;
 import com.una.ac.cr.facturaelectronica.logic.FacturaEntity;
 import com.una.ac.cr.facturaelectronica.logic.ProductoEntity;
@@ -8,11 +9,12 @@ import com.una.ac.cr.facturaelectronica.service.ClienteService;
 import com.una.ac.cr.facturaelectronica.service.FacturaService;
 import com.una.ac.cr.facturaelectronica.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -77,6 +79,19 @@ public class Controller {
         model.addAttribute("facturas", facturas);
         return "/presentation/proveedorLogin/factura/listarFacturas";
     }*/
+    @GetMapping(value = "/factura/{id}/xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String generateXml(@PathVariable("id") int id) {
+        FacturaEntity aux = facturaService.getFacturaById(id);
+        try {
+            FacturaXML facturaXML = new FacturaXML();
+            return facturaXML.generateXml(facturaService.facturaFindAllByProveedorId(aux.getProveedor()));
+        } catch (Exception e) {
+            // Manejar excepción
+            return null;
+        }
+
+    }
     @PostMapping("/presentation/facturas/add")
     public String addFactura(HttpSession session, Model model) {
         //        // Obtener el proveedor, cliente y productos de la sesión
