@@ -1,9 +1,12 @@
 package com.una.ac.cr.facturaelectronica.presentation.factura;
 
+import com.una.ac.cr.facturaelectronica.logic.ClienteEntity;
 import com.una.ac.cr.facturaelectronica.logic.FacturaEntity;
 import com.una.ac.cr.facturaelectronica.logic.ProductoEntity;
 import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
+import com.una.ac.cr.facturaelectronica.service.ClienteService;
 import com.una.ac.cr.facturaelectronica.service.FacturaService;
+import com.una.ac.cr.facturaelectronica.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -19,9 +22,14 @@ import java.util.List;
 public class Controller {
     @Autowired
     FacturaService facturaService;
-
-    public Controller(FacturaService facturaService) {
+ @Autowired
+    ClienteService clienteService;
+ @Autowired
+    UsuarioService usuarioService;
+    public Controller(FacturaService facturaService, ClienteService clienteService, UsuarioService usuarioService) {
         this.facturaService = facturaService;
+        this.clienteService = clienteService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/presentation/facturas/show")
@@ -38,6 +46,8 @@ public class Controller {
     @GetMapping("/presentation/facturas/listarFacturas")
     public String listarFacturas(Model model, HttpSession session){
         String usuarioId = (String) session.getAttribute("usuarioId");
+        model.addAttribute("cliente", session.getAttribute("cliente"));
+        model.addAttribute("usuario", session.getAttribute("usuario"));
         Iterable<FacturaEntity> facturas = facturaService.facturaFindAllByProveedorId(usuarioId);
         model.addAttribute("facturas", facturas);
         return "/presentation/proveedorLogin/factura/listarFacturas";
@@ -66,6 +76,13 @@ public class Controller {
         factura.setTotal(totalFactura);
         // Limpiar la lista de productos de la sesión
         session.removeAttribute("productos");
+//        session.removeAttribute("clienteNombre");
+
+        ClienteEntity cliente = clienteService.clienteFindById(clienteId, usuarioId);
+        UsuarioEntity usuario = usuarioService.proveedorById(usuarioId);
+        session.setAttribute("cliente", cliente);
+        session.setAttribute("usuario", usuario);
+
         facturaService.saveFactura(factura);
         return "redirect:/presentation/facturas/listarFacturas";
     }
