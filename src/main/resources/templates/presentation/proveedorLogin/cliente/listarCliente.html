@@ -8,9 +8,10 @@
 <header th:insert="headerFooter:: header"> </header>
 
 <!--<a th:href="@{/presentation/cliente/register(proveedorId=${session.getAttribute('idProveedor')})}"> AGREGAR CLIENTES </a>-->
-<a th:href="@{/presentation/cliente/register(proveedorId=${session.idProveedor})}"> AGREGAR CLIENTES </a>
 
-
+<div class="login-container">
+    <div> <p class="loginP">Lista de Clientes</p> </div>
+</div>
         <div class="centered">
             <table>
 <!--                CREATE TABLE cliente (-->
@@ -38,6 +39,10 @@
                 </tr>
             </table>
         </div>
+<div class="button-container">
+    <a class="register-button" th:href="@{/presentation/cliente/register(proveedorId=${session.idProveedor})}">AGREGAR CLIENTES</a>
+</div>
+
 
 <footer th:insert="headerFooter::footer"></footer>
 

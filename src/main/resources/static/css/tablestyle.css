@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh; /* Altura mínima del 100% del viewport */
+    min-height: 20vh; /* Altura mínima del 100% del viewport */
 }
 
 .centered table {

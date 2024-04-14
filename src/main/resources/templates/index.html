@@ -11,15 +11,15 @@
     </div>
     <div>
         <form th:action="@{/presentation/proveedor/login}" method="post">
-            <label for="idProveedor">Username:</label>
-            <input type="text" id="idProveedor" name="idProveedor" placeholder="Enter your username"><br><br>
-            <label for="contrasena">Password:</label>
-            <input type="password" id="contrasena" name="contrasena" placeholder="Enter your password"><br><br>
+            <label for="idProveedor">ID de Usuario:</label>
+            <input type="text" id="idProveedor" name="idProveedor" placeholder="Ingrese su ID de usuario"><br><br>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña"><br><br>
             <input type="submit" value="Login">
             <div th:if="${error}" class="error" th:text="${error}">Usuario o contraseña inválidos.</div>
         </form>
         <div class="registerlink" >
-            <p>Don't have an account? <a href="/presentation/register/show">Register</a></p>
+            <p>No tiene una cuenta? <a href="/presentation/register/show">Registrese aquí</a></p>
         </div>
     </div>
 </main>
