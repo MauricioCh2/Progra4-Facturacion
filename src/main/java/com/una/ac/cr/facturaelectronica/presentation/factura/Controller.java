@@ -46,10 +46,26 @@ public class Controller {
     @GetMapping("/presentation/facturas/listarFacturas")
     public String listarFacturas(Model model, HttpSession session){
         String usuarioId = (String) session.getAttribute("usuarioId");
-        model.addAttribute("cliente", session.getAttribute("cliente"));
-        model.addAttribute("usuario", session.getAttribute("usuario"));
         Iterable<FacturaEntity> facturas = facturaService.facturaFindAllByProveedorId(usuarioId);
+
+        // Crear listas para almacenar los nombres de los proveedores y clientes
+        List<String> proveedoresNombres = new ArrayList<>();
+        List<String> clientesNombres = new ArrayList<>();
+
+        // Iterar sobre las facturas y buscar los nombres de los proveedores y clientes
+        for (FacturaEntity factura : facturas) {
+            UsuarioEntity proveedor = usuarioService.proveedorById(factura.getProveedor());
+            ClienteEntity cliente = clienteService.clienteFindById(factura.getCliente(), usuarioId);
+
+            proveedoresNombres.add(proveedor.getNombre());
+            clientesNombres.add(cliente.getNombre());
+        }
+
+        // Añadir las listas al modelo
+        model.addAttribute("proveedoresNombres", proveedoresNombres);
+        model.addAttribute("clientesNombres", clientesNombres);
         model.addAttribute("facturas", facturas);
+
         return "/presentation/proveedorLogin/factura/listarFacturas";
     }
     @PostMapping("/presentation/facturas/add")
