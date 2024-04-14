@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface ClienteRepository extends JpaRepository<ClienteEntity,String> {
     Iterable<ClienteEntity> findAllByUsuarioId(String id);
+    ClienteEntity  findByClienteIdAndUsuarioId(String id, String usuarioId);
+
 }

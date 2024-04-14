@@ -17,8 +17,13 @@ public class ClienteService {
     public Iterable<ClienteEntity> clienteFindAllByProveedorId(String id){
         return clienteRepository.findAllByUsuarioId(id);
     }
+
     public void clienteSave(ClienteEntity cliente){
         clienteRepository.save(cliente);
+    }
+
+    public ClienteEntity clienteFindById(String id, String usuarioId){
+        return clienteRepository.findByClienteIdAndUsuarioId(id, usuarioId);
     }
 
 }
