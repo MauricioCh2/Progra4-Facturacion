@@ -3,8 +3,10 @@
 <head th:insert="headerFooter::head">
 <body>
 <header th:insert="headerFooter:: header"> </header>
+<div class="login-container">
+    <div> <p class="loginP">Lista de Clientes</p> </div>
 <div class="centered">
-    <h1>LISTADO DE FACTURAS</h1>
+
     <table>
         <tr>
             <th>ID</th>
@@ -19,8 +21,8 @@
         </tr>
         <tr th:each="f : ${facturas}">
             <td th:text="${f.facturaId}"/>
-            <td th:text ="${usuario.nombre}"/>
-            <td th:text="${cliente.nombre}"/>
+            <td th:text ="${f.proveedor}"/>
+            <td th:text="${f.cliente}"/>
             <td th:text="${f.cantidad}"/>
             <td th:text="${f.fecha}"/>
             <td th:text="${f.total}"/>
