@@ -36,8 +36,9 @@ public class Controller {
 
 
     @GetMapping("/presentation/facturas/listarFacturas")
-    public String listarFacturas(Model model){
-        Iterable<FacturaEntity> facturas = facturaService.facturaFindAll();
+    public String listarFacturas(Model model, HttpSession session){
+        String usuarioId = (String) session.getAttribute("usuarioId");
+        Iterable<FacturaEntity> facturas = facturaService.facturaFindAllByProveedorId(usuarioId);
         model.addAttribute("facturas", facturas);
         return "/presentation/proveedorLogin/factura/listarFacturas";
     }
