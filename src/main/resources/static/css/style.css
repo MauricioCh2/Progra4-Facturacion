@@ -130,3 +130,6 @@ header nav div a {
 .links a:hover {
     color: darkslateblue; /* Cambia el color del texto */
 }
+.error{
+    color:  red;
+}

@@ -68,7 +68,7 @@ VALUES (1, 'PROD001', 'Producto Uno', 'Descripción del producto uno', 100.0, 50
        (2, 'PROD002', 'Producto Dos', 'Descripción del producto dos', 150.0, 300.0, '22');
 
 
-select * from usuario;
+5
 select * from Cliente;
 select * from Producto;
 select * from factura;
