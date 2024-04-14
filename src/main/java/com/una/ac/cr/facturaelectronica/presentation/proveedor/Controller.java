@@ -79,6 +79,6 @@ public class Controller {
 
     @GetMapping("/presentation/About/about")
     public String about(){
-        return "/presentation/about/About";
+        return "/presentation/About/about";
     }
 }

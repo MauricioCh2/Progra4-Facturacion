@@ -6,27 +6,37 @@
 <h1>LISTADO DE FACURAS</h1>
 <div class="centered">
     <table>
-<!--        &#45;&#45; Tabla de Facturas-->
 <!--        CREATE TABLE factura (-->
-<!--        factura_id INT not null,-->
+<!--        factura_id INT not null auto_increment,-->
 <!--        fecha DATE,-->
 <!--        total float,-->
+<!--        cantidad int,-->
 <!--        cliente VARCHAR(12),-->
+<!--        proveedor VARCHAR(12),-->
+<!--        id_producto int,-->
 <!--        constraint Pk_facturas primary key (factura_id),-->
-<!--        constraint Fk_facturas foreign key (cliente) references Cliente (cliente_id)-->
+<!--        constraint Fk1_facturas foreign key (cliente) references cliente (cliente_id),-->
+<!--        constraint FK2_facturas foreign key (proveedor) references usuario (id_usuario),-->
+<!--        constraint FK3_facturas foreign key (id_producto) references producto (producto_id)-->
 <!--        );-->
         <tr>
             <th>ID</th>
+            <th>Cantidad</th>
             <th>DATE</th>
             <th>total</th>
             <th>cliente Id</th>
+            <th>proveedor Id</th>
+            <th>producto Id</th>
             <th>...</th>
         </tr>
         <tr th:each="f : ${facturas}">
             <td th:text="${f.facturaId}"/>
+            <td th:text="${f.cantidad}"/>
             <td th:text="${f.fecha}"/>
             <td th:text="${f.total}"/>
             <td th:text ="${f.cliente}"/>
+            <td th:text ="${f.proveedor}"/>
+            <td th:text ="${f.idProducto}"/>
         </tr>
     </table>
 </div>
