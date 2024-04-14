@@ -3,12 +3,12 @@ package com.una.ac.cr.facturaelectronica.logic;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "factura", schema = "facturaelectronica")
+@Table(name = "factura", schema = "facturaelectronica", catalog = "")
 public class FacturaEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "factura_id")
     private int facturaId;
@@ -19,13 +19,17 @@ public class FacturaEntity {
     @Column(name = "total")
     private Double total;
     @Basic
-    @Column(name = "cliente", insertable=false, updatable=false)
+    @Column(name = "cantidad")
+    private Integer cantidad;
+    @Basic
+    @Column(name = "cliente")
     private String cliente;
-    @ManyToOne
-    @JoinColumn(name = "cliente", referencedColumnName = "cliente_id")
-    private ClienteEntity clienteByCliente;
-    @OneToMany(mappedBy = "facturaByIdFactura")
-    private Collection<FacturasProductosEntity> facturasProductosByFacturaId;
+    @Basic
+    @Column(name = "proveedor")
+    private String proveedor;
+    @Basic
+    @Column(name = "id_producto")
+    private Integer idProducto;
 
     public int getFacturaId() {
         return facturaId;
@@ -51,6 +55,14 @@ public class FacturaEntity {
         this.total = total;
     }
 
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public String getCliente() {
         return cliente;
     }
@@ -59,32 +71,32 @@ public class FacturaEntity {
         this.cliente = cliente;
     }
 
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FacturaEntity that = (FacturaEntity) o;
-        return facturaId == that.facturaId && Objects.equals(fecha, that.fecha) && Objects.equals(total, that.total) && Objects.equals(cliente, that.cliente);
+        return facturaId == that.facturaId && Objects.equals(fecha, that.fecha) && Objects.equals(total, that.total) && Objects.equals(cantidad, that.cantidad) && Objects.equals(cliente, that.cliente) && Objects.equals(proveedor, that.proveedor) && Objects.equals(idProducto, that.idProducto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(facturaId, fecha, total, cliente);
-    }
-
-    public ClienteEntity getClienteByCliente() {
-        return clienteByCliente;
-    }
-
-    public void setClienteByCliente(ClienteEntity clienteByCliente) {
-        this.clienteByCliente = clienteByCliente;
-    }
-
-    public Collection<FacturasProductosEntity> getFacturasProductosByFacturaId() {
-        return facturasProductosByFacturaId;
-    }
-
-    public void setFacturasProductosByFacturaId(Collection<FacturasProductosEntity> facturasProductosByFacturaId) {
-        this.facturasProductosByFacturaId = facturasProductosByFacturaId;
+        return Objects.hash(facturaId, fecha, total, cantidad, cliente, proveedor, idProducto);
     }
 }
