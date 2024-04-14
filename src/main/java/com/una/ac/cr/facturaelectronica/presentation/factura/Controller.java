@@ -68,6 +68,15 @@ public class Controller {
 
         return "/presentation/proveedorLogin/factura/listarFacturas";
     }
+    /* @GetMapping("/presentation/facturas/listarFacturas")
+    public String listarFacturas(Model model, HttpSession session){
+        String usuarioId = (String) session.getAttribute("usuarioId");
+        model.addAttribute("cliente", session.getAttribute("cliente"));
+        model.addAttribute("usuario", session.getAttribute("usuario"));
+        Iterable<FacturaEntity> facturas = facturaService.facturaFindAllByProveedorId(usuarioId);
+        model.addAttribute("facturas", facturas);
+        return "/presentation/proveedorLogin/factura/listarFacturas";
+    }*/
     @PostMapping("/presentation/facturas/add")
     public String addFactura(HttpSession session, Model model) {
         //        // Obtener el proveedor, cliente y productos de la sesión
