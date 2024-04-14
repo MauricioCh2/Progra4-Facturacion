@@ -21,6 +21,7 @@ CREATE TABLE cliente (
     CONSTRAINT PK_Cliente PRIMARY KEY (cliente_id),
     CONSTRAINT FK_Usuario FOREIGN KEY (usuario_id) REFERENCES usuario (id_usuario)
 );
+
 -- Tabla de Productos/Servicios
 CREATE TABLE producto (
     producto_id INT NOT NULL,
@@ -37,24 +38,37 @@ CREATE TABLE producto (
 -- ------------------------------------------------------------------------
 -- Tabla de Facturas
 CREATE TABLE factura (
-    factura_id INT not null,
+    factura_id INT not null auto_increment,
     fecha DATE,
     total float,
+    cantidad int,
     cliente VARCHAR(12),
+    proveedor VARCHAR(12),
+    id_producto int,
     constraint Pk_facturas primary key (factura_id),
-	constraint Fk_facturas foreign key (cliente) references Cliente (cliente_id)
-);
- -- Tabla de Facturas-Productos RELACION 
-CREATE TABLE facturas_productos (
-  id INT NOT NULL AUTO_INCREMENT,
-  id_producto INT NOT NULL,
-  id_factura INT NOT NULL,
-  CONSTRAINT Pk_facturas_productos PRIMARY KEY (id),
-  CONSTRAINT Fk_id_producto FOREIGN KEY (id_producto) REFERENCES Producto(producto_id),
-  CONSTRAINT Fk_id_factura FOREIGN KEY (id_factura) REFERENCES Factura(factura_id)
+    constraint Fk1_facturas foreign key (cliente) references cliente (cliente_id),
+    constraint FK2_facturas foreign key (proveedor) references usuario (id_usuario),
+    constraint FK3_facturas foreign key (id_producto) references producto (producto_id)
 );
 -- ------------------------------------------------------------------------
+
+
+
+INSERT INTO usuario (id_usuario, nombre, correo_electronico, contrasena, activo, telefono, rol) 
+VALUES ('11', 'Juan Perez', 'juan@example.com', '11', 'ACEP', 123456789, 'PROV'),
+       ('22', 'Maria Lopez', 'maria@example.com', '22', 'AC', 987654321, 'ADM');
+
+INSERT INTO cliente (cliente_id, nombre, correo_electronico, usuario_id) 
+VALUES ('cli001', 'Cliente Uno', 'cliente1@example.com', '11'),
+       ('cli002', 'Cliente Dos', 'cliente2@example.com', '22');
+
+
+INSERT INTO producto (producto_id, codigo, nombre, descripcion, precio, total, usuario_id) 
+VALUES (1, 'PROD001', 'Producto Uno', 'Descripción del producto uno', 100.0, 500.0, '11'),
+       (2, 'PROD002', 'Producto Dos', 'Descripción del producto dos', 150.0, 300.0, '22');
+
 
 select * from usuario;
 select * from Cliente;
 select * from Producto;
+select * from factura;

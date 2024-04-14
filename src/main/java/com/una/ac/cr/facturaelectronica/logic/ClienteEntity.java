@@ -23,8 +23,6 @@ public class ClienteEntity {
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario", nullable = false)
     private UsuarioEntity usuarioByUsuarioId;
-    @OneToMany(mappedBy = "clienteByCliente")
-    private Collection<FacturaEntity> facturasByClienteId;
 
     public String getClienteId() {
         return clienteId;
@@ -79,11 +77,4 @@ public class ClienteEntity {
         this.usuarioByUsuarioId = usuarioByUsuarioId;
     }
 
-    public Collection<FacturaEntity> getFacturasByClienteId() {
-        return facturasByClienteId;
-    }
-
-    public void setFacturasByClienteId(Collection<FacturaEntity> facturasByClienteId) {
-        this.facturasByClienteId = facturasByClienteId;
-    }
 }

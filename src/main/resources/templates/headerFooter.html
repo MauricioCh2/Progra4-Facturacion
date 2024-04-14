@@ -18,22 +18,21 @@
             <img th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg">
         </div>
         <div>
-            <a th:href="@{/presentation/proveedor/about}">Acerca de ...</a>
+            <a href="/presentation/About/about">Acerca de ...</a>
         </div>
         <th:block th:if="${session.usuario != null}">
             <div>
 
-                <a href="#">Facturar</a>
+                <a href="/presentation/facturas/show">Facturar</a>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/clientes">Clientes</a>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/producto/show">Productos</a>
                 <span>&nbsp;&nbsp;</span>
-                <a href="#">Facturas</a>
-
+                <a href="/presentation/facturas/listarFacturas">Facturas</a>
                 <span>&nbsp;&nbsp;</span>
-                <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
                 <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
+                <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/proveedor/logout">Logout</a>
             </div>
