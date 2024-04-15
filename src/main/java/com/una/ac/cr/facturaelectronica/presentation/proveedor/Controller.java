@@ -1,15 +1,12 @@
 package com.una.ac.cr.facturaelectronica.presentation.proveedor;
 
 import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
-import com.una.ac.cr.facturaelectronica.service.ClienteService;
 import com.una.ac.cr.facturaelectronica.service.UsuarioService;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -17,8 +14,7 @@ import java.util.Optional;
 public class Controller {
     @Autowired
     private UsuarioService service;
-    @Autowired
-    private ClienteService clienteService;
+
     @GetMapping("/presentation/proveedores/show")
     public String show(Model model){
         model.addAttribute("proveedores", service.usuarioFindAll());
@@ -54,7 +50,7 @@ public class Controller {
                 session.setAttribute("usuario", proveedor);
                 session.setAttribute("idProveedor", proveedor.getIdUsuario());
                 model.addAttribute("usuario", proveedor);
-                return "redirect:/presentation/facturas/show";
+                return "/presentation/proveedorLogin/View";
             } else {
                 model.addAttribute("error", "Usuario Inactivo o Rechazado.");
                 return "index";
@@ -72,13 +68,41 @@ public class Controller {
         return "/presentation/proveedorLogin/Edit";
     }
 
+    @PostMapping("/presentation/proveedor/save")
+    public String save(Model model, UsuarioEntity usuario){
+        service.save(usuario);
+        return "redirect:/presentation/proveedor/login";
+    }
+
+    @PostMapping("/presentation/proveedor/update")
+    public String updateProveedor(@ModelAttribute UsuarioEntity proveedor){
+        service.proveedorUpdate(proveedor);
+        return "/presentation/proveedorLogin/Edit";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String formEditarProveedor(@PathVariable String id, @ModelAttribute UsuarioEntity proveedor, Model model){
+        proveedor.setIdUsuario(id);
+        model.addAttribute("proveedor",proveedor);
+        model.addAttribute("editar_PROVEEDOR", "/proveedor/Controller/editar"+id);
+        return "EditarProveedor";
+    }
+    @PostMapping("/editar/{id}")
+    public String actualizarProveedores(@PathVariable String id, @ModelAttribute UsuarioEntity proveedor){
+        service.actualizarProveedor(id, proveedor);
+        return "EditarProveedor";
+    }
+
+
     @GetMapping("/presentation/proveedor/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "index";}
+        return "index";
+    }
 
     @GetMapping("/presentation/About/about")
     public String about(){
         return "/presentation/About/about";
     }
 }
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
+    <title>Editar Proveedor</title>
+</head>
+<body>
+
+<header th:insert="headerFooter::header"></header>
+
+<!--<form th:object="${proveedor}" th:action="@{/proveedor/Controller/editar/{id}(id=${proveedor.getIdUsuario()})}" method="post">-->
+<!--    &lt;!&ndash;  <input type="hidden" th:field="*{idProveedor}">&ndash;&gt;-->
+
+<!--    <label>Identificación: <input type="hidden" th:field="*{idProveedor}"></label>-->
+<!--    <label>Nombre:         <input type="text" th:field="*{nombre}"></label>-->
+<!--    <label>Correo:         <input type="text" th:field="*{correoElectronico}"></label>-->
+<!--    <label>Contraseña:     <input type="text" th:field="*{contrasena}"></label>-->
+<!--    <label>Teléfono:       <input type="text" th:field="*{telefono}"></label>-->
+<!--    <label>Dirección:      <input type="text" th:field="*{direccion}"></label>-->
+<!--    <label for="activo">Tipo (ACEP: Aceptar, RECH: Rechazar, ESP: Espera):</label>-->
+<!--    <select id="activo" name="activo" th:field="*{activo}">-->
+<!--        <option value="ACEP">Aceptar</option>-->
+<!--        <option value="RECH">Rechazar</option>-->
+<!--        <option value="ESP">Espera</option>-->
+<!--    </select>-->
+<!--    <button type="submit" class="botones">Guardar</button>-->
+
+<!--    &lt;!&ndash; <a href="/LoginController/inicio">VOLVER AL INICIO</a>&ndash;&gt;-->
+<!--    <a th:href="@{/}" class="link">Ir a la página de inicio</a>-->
+<!--</form>-->
+
+<footer th:insert="headerFooter::footer"></footer>
+</body>
+</html>

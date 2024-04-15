@@ -16,12 +16,15 @@
             <img th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg">
         </div>
         <div>
-            <a href="/presentation/About/about">Acerca de ...</a>
+            <a th:href="@{/presentation/About/about}">Acerca de ...</a>
         </div>
         <th:block th:if="${session.usuario != null}">
             <div>
                 <span>Bienvenido, </span>
                 <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
+
+<!--                <a th:href="@{/presentation/editar/{id}(id=${Proveedor_editar.idProvedor})}" th:text="${session.usuario.nombre}"<a></a>-->
+
                 <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/facturas/show">Facturar</a>

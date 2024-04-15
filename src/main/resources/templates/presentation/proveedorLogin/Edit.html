@@ -5,60 +5,39 @@
 <body>
 <header th:insert="headerFooter::header"></header>
 
-<!--        <label for="name">Nombre de usuario:</label>-->
-<!--            <h2 th:text="${session.usuario.nombre}"/>-->
-<!--            <h2 th:text="${session.usuario.correoElectronico}"/>-->
-<!--            <h2 th:text="${session.usuario.contrasena}"/>-->
-<!--            <h2 th:text ="${session.usuario.activo}"/>-->
-<!--            <h2 th:text ="${session.usuario.telefono}"/>-->
-<!--            <h2 th:text ="${session.usuario.direccion}"/>-->
-<!--            <h2 th:text ="${session.usuario.tipoProveedor}"/>-->
-<!--        <h2 th:text="*{proveedor.nombre}"/>-->
+<table>
+    <tr>
+        <td><h2>Nombre:</h2></td>
+        <td><h2 th:text="${session.usuario.nombre}"/></td>
+    </tr>
+    <tr>
+        <td><h2>Correo electronico:</h2></td>
+        <td><h2 th:text="*{session.usuario.correoElectronico}"/></td>
+    </tr>
+    <tr>
+        <td><h2>Activo:</h2></td>
+        <td><h2 th:text="*{session.usuario.activo}"/></td>
+    </tr>
+    <tr>
+        <td><h2>Telefono: </h2></td>
+        <td><h2 th:text="*{session.usuario.telefono}"/></td>
+    </tr>
+    <tr>
+        <td><h2>Rol:</h2></td>
+        <td><h2 th:text="*{session.usuario.rol}"/></td>
+    </tr>
 
-<!--<h2 th:text="${session.usuario.nombre}"/>-->
-<!--<h2 th:text="*{session.usuario.correoElectronico}"/>-->
-<!--<h2 th:text="*{session.usuario.telefono}"/>-->
-<!--<h2 th:text="*{session.usuario.activo}"/>-->
+    <tr>
+        <td>
+            <a th:href="@{/proveedor/Controller/editar/{id}(id=${session.usuario.idUsuario})}">Editar</a>
+<!--                <a th:href="@{/proveedor/Controller/editar?id=${session.usuario.idUsuario}}">Editar</a>-->
+        </td>
+        <td>
+            <a th:href="@{/}" class="link">Ir a la página de inicio</a>
+        </td>
 
-<form name="form" action="/presentation/register/register" method="post">
-
-    <h1 class="register-nombre">Datos de usuario:</h1>
-
-    <label class="etiqueta">Nombre:</label>
-    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"> <br><br>
-
-    <label class="etiqueta">Correo Electrónico:</label>
-    <input type="text" name="correo_electronico" id="correo_electronico" class="form-control" placeholder="Correo Electrónico"> <br><br>
-
-    <label class="etiqueta">Teléfono:</label>
-    <input type="tel" name="telefono" id="telefono" class="form-control" placeholder="Teléfono"> <br><br>
-
-    <button type="submit" name="register">Register</button>
-</form>
-
-
-<!--<label for="name">Nombre de cliente:</label>-->
-<!--<h2 th:text="${session.cliente.nombre}"/>-->
-<!--<h2 th:text="${session.cliente.correoElectronico}"/>-->
-<!--<h2 th:text="${session.cliente.contrasena}"/>-->
-<!--<h2 th:text="${session.cliente.activo}"/>-->
-<!--<h2 th:text="${session.cliente.direccion}"/>-->
-<!--<h2 th:text="${session.cliente.tipoProveedor}"/>-->
-
-<!--<form th:action="@{/presentation/proveedor/edit}" method="post">-->
-<!--    <input type="hidden" th:field="*{proveedor.idProveedor}"/>-->
-<!--    <label for="name">Nombre de usuario:</label>-->
-<!--    <input type="text" id="name" th:field="*{proveedor.nombre}"/><br><br>-->
-<!--    <label for="email">Correo electronico:</label>-->
-<!--    <input type="text" id="email" th:field="*{proveedor.correoElectronico}"/><br><br>-->
-<!--    <label for="adress">Direccion:</label>-->
-<!--    <input type="text" id="adress" th:field="*{proveedor.direccion}"/><br><br>-->
-<!--    <label for="type">Tipo de proveedor:</label>-->
-<!--    <input type="text" id="type" th:field="*{proveedor.tipoProveedor}"/><br><br>-->
-<!--    <label for="password">Nueva contraseña:</label>-->
-<!--    <input type="password" id="password" name="password"/><br><br>-->
-<!--    <input type="submit" value="Guardar cambios"/>-->
-<!--</form>-->
+    </tr>
+</table>
 
 <footer th:insert="headerFooter::footer"></footer>
 </body>
