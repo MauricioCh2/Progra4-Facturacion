@@ -10,16 +10,17 @@ import java.util.List;
 public class FacturaXML {
     public String generateXml(Iterable<FacturaEntity> facturas) {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(FacturaEntity.class);
+            Facturas facturasContainer = new Facturas();
+            facturasContainer.setFacturas((List<FacturaEntity>) facturas);
+
+            JAXBContext jaxbContext = JAXBContext.newInstance(Facturas.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             StringWriter sw = new StringWriter();
 
-            for (FacturaEntity factura : facturas) {
-                jaxbMarshaller.marshal(factura, sw);
-            }
+            jaxbMarshaller.marshal(facturasContainer, sw);
 
             return sw.toString();
 
