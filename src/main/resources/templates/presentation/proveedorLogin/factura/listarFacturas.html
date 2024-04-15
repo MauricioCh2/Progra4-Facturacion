@@ -31,6 +31,7 @@
             <td th:text="${f.total}"/>
             <td><a href="#"> <img class="logosPequenios" th:src="@{/images/detalles.png}" th:alt="detalles.png">  </a> </td>
             <td><a href="#"> <img class="logosPequenios" th:src="@{/images/pdf.png}" th:alt="pdf.png">  </a> </td>
+<!--            <td><a th:href="@{/presentation/facturas/listarFacturas/(format=pdf)}"> <img class="logosPequenios" th:src="@{/images/pdf.png}" th:alt="pdf.png">  </a> </td>-->
             <td><a th:href="@{/factura/__${f.facturaId}__/xml}" target="_blank"> <img class="logosPequenios" th:src="@{/images/xml.png}" th:alt="xml.png">  </a> </td>
         </tr>
 <!--        <td th:text ="${f.idProducto}"/>-->

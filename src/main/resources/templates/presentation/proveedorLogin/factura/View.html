@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<html lang="en" th:extends="headerFooter" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="headerFooter::head">
 <body>
-<header th:insert="headerFooter:: header"> </header>
+<header th:insert="headerFooter:: header"></header>
 
-    <h1>Facturar</h1>
+<h1>Facturar</h1>
 <div class="centered">
-        <table>
+    <table>
 
-                    <tr>
-                        <td>Proveedor:
-                            <label th:text="${session.proveedorName}"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Cliente:
-                            <label th:text="${session.clienteNombre}"></label>
-                            <form th:action="@{/presentation/cliente/findById}" method="get">
-                                <input type="text" name="clienteId" id="clienteId" placeholder="Ingrese ID del cliente">
-                                <button type="submit">Buscar Cliente</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Cat: </th>
-                        <th>Codigo: </th>
-                        <th>Nomre: </th>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-                        <th>Monto</th>
-                        <th>...</th>
-                    </tr>
-                    <tr th:each="p : ${productos}">>
-                        <td>...</td>
-                        <td th:text="${p.codigo}"></td>
-                        <td th:text="${p.nombre}"></td>
-                        <td th:text="${p.descripcion}"></td>
-                        <td th:text="${p.precio}"></td>
-                        <td th:text="${p.total}"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Codigo: </label>
-                            <form th:action="@{/presentation/producto/findByCodigo}" method="get">
-                                <input type="text" name="codigoId" id="codigoId" placeholder="Codigo del producto">
-                                <button type="submit">Buscar Producto</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr th:if="${mensaje != null}">
-                        <td th:text="${mensaje}" style="color: red;"></td>
-                    </tr>
-          <tr>
-            <td><form action="/presentation/facturas/add" method="post">
-                <button type="submit">Facturar</button>
-             </form>  </td>
-          </tr>
-        </table>
+        <tr>
+            <td>Proveedor:
+                <label th:text="${session.proveedorName}"></label>
+            </td>
+        </tr>
+        <tr>
+            <td> Cliente:
+                <label th:text="${session.clienteNombre}"></label>
+                <form method="get" th:action="@{/presentation/cliente/findById}">
+                    <input id="clienteId" name="clienteId" placeholder="Ingrese ID del cliente" type="text">
+                    <button type="submit">Buscar Cliente</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th>Cat:</th>
+            <th>Codigo:</th>
+            <th>Nomre:</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Monto</th>
+            <th>...</th>
+        </tr>
+        <tr th:each="p : ${productos}">>
+            <td>...</td>
+            <td th:text="${p.codigo}"></td>
+            <td th:text="${p.nombre}"></td>
+            <td th:text="${p.descripcion}"></td>
+            <td th:text="${p.precio}"></td>
+            <td th:text="${p.total}"></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Codigo: </label>
+                <form method="get" th:action="@{/presentation/producto/findByCodigo}">
+                    <input id="codigoId" name="codigoId" placeholder="Codigo del producto" type="text">
+                    <button type="submit">Buscar Producto</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${mensaje != null}">
+            <td style="color: red;" th:text="${mensaje}"></td>
+        </tr>
+        <tr>
+            <td>
+                <form action="/presentation/facturas/add" method="post">
+                    <button type="submit">Facturar</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 
 </div>
 
