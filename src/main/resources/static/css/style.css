@@ -7,14 +7,19 @@
     font-family: cursive, sans-serif;
     letter-spacing: 2px; /* Ajusta el espaciado entre letras */
     text-transform: uppercase; /* Convierte el texto en mayúsculas */
+
 }
+
+body {
+    margin: 0;
+}
+
 .registerlink{
 
     text-decoration: none;
     font-size: 20px;
     font-family: cursive, sans-serif;
     letter-spacing: 2px; /* Ajusta el espaciado entre letras */
-    text-transform: uppercase; /* Convierte el texto en mayúsculas */
 }
 
 .registerlink a{
@@ -79,6 +84,7 @@ header nav div a {
 
 /*LOGIN STYLES*/
 .wrapper {
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,7 +95,7 @@ header nav div a {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+
 }
 .loginP{
     margin-right: 10px;
@@ -138,6 +144,34 @@ header nav div a {
 .links a:hover {
     color: darkslateblue; /* Cambia el color del texto */
 }
+
+/*boton agregar clientes y productos*/
+
+.register-button {
+    background-color: lightblue;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.register-button:hover {
+    background-color: skyblue; /* Cambia el color de fondo al pasar el ratón por encima */
+}
+
+.button-container {
+    position: relative; /* Contenedor para el posicionamiento relativo del botón */
+    margin-top: 5px; /* Agrega un espacio entre la tabla y el botón */
+    left: 190px;
+}
+
+
 .error{
     color:  red;
 }

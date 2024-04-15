@@ -1,45 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
     <meta charset="UTF-8">
-    <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .wrapper {
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .contendor {
-            margin-bottom: 15px;
-        }
-        .etiqueta {
-            font-weight: bold;
-        }
-        .campo {
-            display: flex;
-            align-items: center;
-        }
-        .btn-login {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-        }
-        .btn-login:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
+    <title>Registro</title>
+    <link href="/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css" >
 
 </head>
 <body>
+<header th:insert="headerFooter:: header"> </header>
 <main>
 
 <!--    this.idProveedor = idProveedor;-->
@@ -50,39 +18,38 @@
 <!--    this.telefono = telefono;-->
 <!--    this.direccion = direccion;-->
 <!--    this.tipoProveedor = tipoProveedor;-->
-    <div class="wrapper">
-        <form name="form" action="/presentation/register/register" method="post">
-            <div>
-                <h1 class="register-nombre">Register</h1>
-                <div class="contendor">
-                    <label class="etiqueta">Cedula:</label>
-                    <div class="campo"><input type="text" name="idUsuario" id="idUsuario" class="form-control" placeholder="Cedula"></div>
-                </div>
-                <div class="contendor">
-                    <label class="etiqueta">Nombre:</label>
-                    <div class="campo"><input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"></div>
-                </div>
-                <div class="contendor">
-                    <label class="etiqueta">Correo Electrónico:</label>
-                    <div class="campo"><input type="text" name="correo_electronico" id="correo_electronico" class="form-control" placeholder="Correo Electrónico"></div>
-                </div>
-                <div class="contendor">
-                    <label class="etiqueta">Contraseña:</label>
-                    <div class="campo"><input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña"></div>
-                </div>
-                <input type="hidden" name="activo" value="ESP"> <!-- Valor predeterminado "ESP: Espera" para activo -->
-                <div class="contendor">
-                    <label class="etiqueta">Teléfono:</label>
-                    <div class="campo"><input type="tel" name="telefono" id="telefono" class="form-control" placeholder="Teléfono"></div>
-                </div>
-                <input type="hidden" name="rol" value="PROV"> <!-- Valor predeterminado "PROV: Prorveedor" para rol -->
-                <button type="submit" class="btn btn-login" name="register">Register</button>
+    <div class="container">
+        <form th:action="@{/presentation/register/register}" method="post">
+            <h1 class="register-nombre">Registro</h1>
+            <div class="form-group">
+                <label for="idUsuario" class="etiqueta">Cedula:</label>
+                <input type="text" class="form-control" id="idUsuario" name="idUsuario" required>
             </div>
+            <div class="form-group">
+                <label for="nombre" class="etiqueta">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correo_electronico" class="etiqueta">Correo Electrónico:</label>
+                <input type="email" id="correo_electronico" name="correo_electronico" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena" class="etiqueta">Contraseña:</label>
+                <input type="password"  id="contrasena" name="contrasena" required>
+            </div>
+            <input type="hidden" name="activo" value="ESP">
+            <div class="form-group">
+                <label for="telefono" class="etiqueta">Teléfono:</label>
+                <input type="tel" pattern="[0-9]*"  id="telefono" name="telefono" required>
+            </div>
+            <input type="hidden" name="rol" value="PROV">
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+
     </div>
 
 
 </main>
-
+<footer th:insert="headerFooter::footer"></footer>
 </body>
 </html>

@@ -6,7 +6,9 @@
 <body>
         <header th:insert="headerFooter:: header"> </header>
 
-        <a th:href="@{/presentation/producto/register(proveedorId=${session.idProveedor})}">REGISTRAR PRODUCTOS</a> <br> <br> <br>
+        <div class="login-container">
+            <div> <p class="loginP">Lista de Productos</p> </div>
+        </div>
 
         <div class="centered">
             <table>
@@ -47,7 +49,9 @@
                 </tr>
             </table>
         </div>
-
+        <div class="button-container">
+            <a class="register-button" th:href="@{/presentation/producto/register(proveedorId=${session.idProveedor})}">REGISTRAR PRODUCTOS</a>
+        </div>
         <footer th:insert="headerFooter::footer"></footer>
 
 </body>

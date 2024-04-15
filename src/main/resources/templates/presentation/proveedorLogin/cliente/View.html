@@ -44,37 +44,38 @@
 <!--</body>-->
 <!--</html>-->
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head">
     <meta charset="UTF-8">
     <title>Agregar Cliente</title>
-    <!-- Agregar enlaces a los estilos de Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
+<header th:insert="headerFooter:: header"> </header>
 <div class="container">
-    <h1 class="mt-4">Agregar Cliente</h1>
-    <form action="/presentation/cliente/add" method="post" class="mt-4">
+    <h1>Agregar Cliente</h1>
+    <form action="/presentation/cliente/add" method="post">
         <div class="form-group">
             <label for="clienteId">ID del Cliente:</label>
-            <input type="text" id="clienteId" name="clienteId" class="form-control">
+            <input type="text" id="clienteId" name="clienteId" required>
         </div>
 
         <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" class="form-control">
+            <input type="text" id="nombre" name="nombre" required>
         </div>
 
         <div class="form-group">
             <label for="correoElectronico">Correo Electrónico:</label>
-            <input type="email" id="correoElectronico" name="correoElectronico" class="form-control">
+            <input type="email" id="correoElectronico" name="correoElectronico" required>
         </div>
 
         <!-- Cambia el nombre del campo oculto para coincidir con la nueva estructura de datos -->
-        <input type="hidden" id="idUsuario" name="idUsuario" th:value="${idUsuario}" class="form-control">
+        <input type="hidden" id="idUsuario" name="idUsuario" th:value="${idUsuario}" required>
 
-        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
+<footer th:insert="headerFooter::footer"></footer>
 </body>
 </html>

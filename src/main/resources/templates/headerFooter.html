@@ -5,12 +5,14 @@
     <title th:text="#{FACTURA_ELECTRONICA}">HeaderFooter</title>
     <link href="/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css" >
     <link href="/css/tablestyle.css" rel="stylesheet" th:href="@{/css/tablestyle.css}" type="text/css" >
+    <link href="/css/forms.css" rel="stylesheet" th:href="@{/css/forms.css}" type="text/css" >
+
 </head>
 <body>
 <header th:fragment="header" class="header-footer">
     <nav class="links">
         <div>
-            <h1 id="headerName"  >Factura<br> Electronica</h1>
+            <h1 id="headerName">Factura<br>Electronica</h1>
         </div>
         <div class="headerLogo">
             <img th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg">
@@ -20,10 +22,7 @@
         </div>
         <th:block th:if="${session.usuario != null}">
             <div>
-                <span>Bienvenido, </span>
-                <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
-                <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
-                <span>&nbsp;&nbsp;</span>
+
                 <a href="/presentation/facturas/show">Facturar</a>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/clientes">Clientes</a>
@@ -32,6 +31,9 @@
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/facturas/listarFacturas">Facturas</a>
                 <span>&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;</span>
+                <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
+                <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/proveedor/logout">Logout</a>
 
@@ -51,7 +53,6 @@
                     <option value="?lang=pr" th:text="#{Portugues}">Francés(French)</option>
                 </select>
             </div>
-
         </th:block>
     </nav>
 </header>
