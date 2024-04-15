@@ -23,8 +23,12 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
-input[type="hidden"] {
+input[type="tel"],
+input[type="password"],
+input[type="hidden"],
+textarea#descripcion{
     width: calc(100% - 20px); /* Ajusta el ancho de los campos de entrada */
     padding: 10px; /* Añade relleno alrededor del texto */
     border: 1px solid #ccc; /* Añade un borde gris */
@@ -32,7 +36,10 @@ input[type="hidden"] {
 }
 
 input[type="text"]:focus,
+input[type="number"]focus,
 input[type="email"]:focus,
+input[type="tel"]focus,
+input[type="password"]focus,
 input[type="hidden"]:focus {
     outline: none; /* Elimina el contorno al enfocar */
     border-color: #007bff; /* Cambia el color del borde al enfocar */
@@ -49,4 +56,12 @@ input[type="hidden"]:focus {
 
 .btn-primary:hover {
     background-color: #0056b3; /* Cambia el color de fondo del botón al pasar por encima */
+}
+
+.form-control {
+    width: 100%; /* Hacer que los campos se extiendan al 100% del contenedor */
+    padding: 10px; /* Añade relleno alrededor del texto */
+    border: 1px solid #ccc; /* Añade un borde gris */
+    border-radius: 3px; /* Añade bordes redondeados */
+    box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
 }

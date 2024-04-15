@@ -31,8 +31,9 @@
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/facturas/listarFacturas">Facturas</a>
                 <span>&nbsp;&nbsp;</span>
-                <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
+                <span>&nbsp;&nbsp;</span>
                 <img class="logos" src="/images/profilelogo.png" alt="profilelogo.png">
+                <a th:href="@{/presentation/proveedor/edit}" th:text="${session.usuario.nombre}"></a>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/proveedor/logout">Logout</a>
             </div>

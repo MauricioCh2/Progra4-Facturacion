@@ -8,7 +8,7 @@
 <body>
 <header th:insert="headerFooter:: header"> </header>
 <div class="container">
-    <h2 class="mb-4">Formulario de Producto</h2>
+    <h2 class="mb-4">Agregar Producto</h2>
     <form th:action="@{/presentation/producto/add}" method="post">
         <div class="form-group">
             <label for="productoId">ID de Producto</label>
@@ -16,28 +16,28 @@
         </div>
         <div class="form-group">
             <label for="codigo">Código</label>
-            <input type="text" class="form-control" id="codigo" name="codigo" required>
+            <input type="text" id="codigo" name="codigo" required>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required>
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" ></textarea>
+            <textarea id="descripcion" name="descripcion" rows="3"  required></textarea>
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
-            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
+            <input type="number" step="0.01"  id="precio" name="precio" required>
         </div>
         <div class="form-group">
             <label for="total">Total</label>
-            <input type="number" step="0.01" class="form-control" id="total" name="total" placeholder="Ingrese el total del producto" required>
+            <input type="number" step="0.01"  id="total" name="total" required>
         </div>
 
         <input type="hidden" id="idUsuario" name="idUsuario" th:value="${idUsuario}" class="form-control">
 
-        <button type="submit" class="btn btn-submit">Guardar Producto</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 <footer th:insert="headerFooter::footer"></footer>
