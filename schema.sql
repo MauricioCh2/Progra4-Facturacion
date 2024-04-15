@@ -71,3 +71,4 @@ VALUES (1, 'PROD001', 'Producto Uno', 'Descripción del producto uno', 100.0, 50
 select * from cliente;
 select * from producto;
 select * from factura;
+select * from  usuario;

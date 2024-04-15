@@ -30,9 +30,15 @@ public class Controller {
     }
 
     @PostMapping("/presentation/register/register")
-    public String add(@ModelAttribute UsuarioEntity proveedor) {
-        service.proveedorSave(proveedor);
-        return "index";
+    public String add(@ModelAttribute UsuarioEntity proveedor, Model model) {
+        Optional<UsuarioEntity> existingProveedor = Optional.ofNullable(service.proveedorById(proveedor.getIdUsuario()));
+        if (existingProveedor.isPresent()) {
+            model.addAttribute("error", "El proveedor ya existe.");
+            return "/presentation/register/View";
+        } else {
+            service.proveedorSave(proveedor);
+            return "index";
+        }
     }
 
     @GetMapping("/")
