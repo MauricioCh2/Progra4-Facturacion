@@ -1,6 +1,7 @@
 package com.una.ac.cr.facturaelectronica.logic;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -16,6 +17,7 @@ public class UsuarioEntity {
     private String nombre;
     @Basic
     @Column(name = "correo_electronico")
+    @Email(message = "El correo electrónico debe ser válido")
     private String correoElectronico;
     @Basic
     @Column(name = "contrasena")

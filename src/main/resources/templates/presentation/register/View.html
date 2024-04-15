@@ -44,6 +44,9 @@
             </div>
             <input type="hidden" name="rol" value="PROV">
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <div th:if="${error}" class="error" role="alert">
+                <p th:text="${error}"></p>
+            </div>
         </form>
 
     </div>

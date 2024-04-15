@@ -2,11 +2,15 @@ package com.una.ac.cr.facturaelectronica.presentation.producto;
 
 
 import com.una.ac.cr.facturaelectronica.logic.ProductoEntity;
+import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
 import com.una.ac.cr.facturaelectronica.service.ProductoService;
 import com.una.ac.cr.facturaelectronica.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Controller("producto")
 public class Controller {
@@ -33,6 +39,23 @@ public class Controller {
         model.addAttribute("idUsuario", proveedorId);
         return "/presentation/proveedorLogin/producto/View";
     }
+//    @PostMapping("/presentation/register/register")
+//    public String add(@Valid @ModelAttribute UsuarioEntity proveedor, BindingResult bindingResult, Model model) {
+//        Optional<UsuarioEntity> existingProveedor = Optional.ofNullable(service.proveedorById(proveedor.getIdUsuario()));
+//        if (existingProveedor.isPresent()) {
+//            model.addAttribute("error", "El proveedor ya existe.");
+//            return "/presentation/register/View";
+//        } else if(bindingResult.hasErrors()) {
+//            String errorMsg = bindingResult.getAllErrors().stream()
+//                    .map(ObjectError::getDefaultMessage)
+//                    .collect(Collectors.joining(", "));
+//            model.addAttribute("error", errorMsg);
+//        }else {
+//            service.proveedorSave(proveedor);
+//            return "index";
+//        }
+//        return "/presentation/register/View";
+//    }
 
     @PostMapping("/presentation/producto/add")
     public String add(@ModelAttribute ProductoEntity producto, @RequestParam("idUsuario") String idProveedor){

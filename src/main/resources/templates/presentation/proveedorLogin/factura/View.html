@@ -22,7 +22,7 @@
                         </td>
                         <td>
                             <form th:action="@{/presentation/cliente/findById}" method="get" id="form-cliente">
-                                <input type="text" name="clienteId" id="clienteId" placeholder="Ingrese ID del cliente">
+                                <input type="text" name="clienteId" id="clienteId" placeholder="Ingrese ID del cliente" required>
                             </form>
                         </td>
                         <td>
@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <form th:action="@{/presentation/producto/findByCodigo}" method="get" id="form-prod">
-                                <input type="text" name="codigoId" id="codigoId" placeholder="Codigo del producto">
+                                <input type="text" name="codigoId" id="codigoId" placeholder="Codigo del producto" required>
                             </form>
                         </td>
                         <td>

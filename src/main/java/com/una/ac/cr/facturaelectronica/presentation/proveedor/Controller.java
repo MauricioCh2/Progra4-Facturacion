@@ -4,14 +4,17 @@ import com.una.ac.cr.facturaelectronica.logic.UsuarioEntity;
 import com.una.ac.cr.facturaelectronica.service.ClienteService;
 import com.una.ac.cr.facturaelectronica.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.validation.ObjectError;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Controller("proveedores")
 public class Controller {
@@ -30,15 +33,21 @@ public class Controller {
     }
 
     @PostMapping("/presentation/register/register")
-    public String add(@ModelAttribute UsuarioEntity proveedor, Model model) {
+    public String add(@Valid @ModelAttribute UsuarioEntity proveedor, BindingResult bindingResult, Model model) {
         Optional<UsuarioEntity> existingProveedor = Optional.ofNullable(service.proveedorById(proveedor.getIdUsuario()));
         if (existingProveedor.isPresent()) {
             model.addAttribute("error", "El proveedor ya existe.");
             return "/presentation/register/View";
-        } else {
+        } else if(bindingResult.hasErrors()) {
+            String errorMsg = bindingResult.getAllErrors().stream()
+                    .map(ObjectError::getDefaultMessage)
+                    .collect(Collectors.joining(", "));
+            model.addAttribute("error", errorMsg);
+        }else {
             service.proveedorSave(proveedor);
             return "index";
         }
+        return "/presentation/register/View";
     }
 
     @GetMapping("/")
