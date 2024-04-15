@@ -3,31 +3,38 @@
 <head th:insert="headerFooter::head">
 <body>
 <header th:insert="headerFooter:: header"> </header>
-<h1>LISTADO DE FACURAS</h1>
+<div class="login-container">
+    <div> <p class="loginP">Lista de Clientes</p> </div>
 <div class="centered">
+
     <table>
-<!--        &#45;&#45; Tabla de Facturas-->
-<!--        CREATE TABLE factura (-->
-<!--        factura_id INT not null,-->
-<!--        fecha DATE,-->
-<!--        total float,-->
-<!--        cliente VARCHAR(12),-->
-<!--        constraint Pk_facturas primary key (factura_id),-->
-<!--        constraint Fk_facturas foreign key (cliente) references Cliente (cliente_id)-->
-<!--        );-->
         <tr>
             <th>ID</th>
+            <th>Proveedor</th>
+            <th>Cliente</th>
+            <th>Cantidad</th>
             <th>DATE</th>
-            <th>total</th>
-            <th>cliente Id</th>
-            <th>...</th>
+            <th>Total</th>
+            <th>Detalles</th>
+            <th>PDF</th>
+            <th>XML</th>
         </tr>
-        <tr th:each="f : ${facturas}">
+        <tr th:each="f, stat : ${facturas}">
             <td th:text="${f.facturaId}"/>
+            <td th:text ="${proveedoresNombres[stat.index]}"/> <!-- Accede al nombre del proveedor -->
+            <td th:text="${clientesNombres[stat.index]}"/> <!-- Accede al nombre del cliente -->
+<!--            <td th:text="${f.proveedor}"/>-->
+<!--            <td th:text="${f.cliente}"/>-->
+
+            <td th:text="${f.cantidad}"/>
             <td th:text="${f.fecha}"/>
             <td th:text="${f.total}"/>
-            <td th:text ="${f.cliente}"/>
+            <td><a href="#"> <img class="logosPequenios" th:src="@{/images/detalles.png}" th:alt="detalles.png">  </a> </td>
+            <td><a href="#"> <img class="logosPequenios" th:src="@{/images/pdf.png}" th:alt="pdf.png">  </a> </td>
+<!--            <td><a th:href="@{/presentation/facturas/listarFacturas/(format=pdf)}"> <img class="logosPequenios" th:src="@{/images/pdf.png}" th:alt="pdf.png">  </a> </td>-->
+            <td><a th:href="@{/factura/__${f.facturaId}__/xml}" target="_blank"> <img class="logosPequenios" th:src="@{/images/xml.png}" th:alt="xml.png">  </a> </td>
         </tr>
+<!--        <td th:text ="${f.idProducto}"/>-->
     </table>
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head th:fragment="head" >
     <meta charset="UTF-8">
-    <title>HeaderFooter</title>
+    <title th:text="#{FACTURA_ELECTRONICA}">HeaderFooter</title>
     <link href="/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css" >
     <link href="/css/tablestyle.css" rel="stylesheet" th:href="@{/css/tablestyle.css}" type="text/css" >
 </head>
@@ -10,13 +10,13 @@
 <header th:fragment="header" class="header-footer">
     <nav class="links">
         <div>
-            <h1 id="headerName">Factura<br>Electronica</h1>
+            <h1 id="headerName"  >Factura<br> Electronica</h1>
         </div>
         <div class="headerLogo">
             <img th:src="@{/images/headerLogo.jpg}" th:alt="headerLogo.jpg">
         </div>
         <div>
-            <a th:href="@{/presentation/proveedor/about}">Acerca de ...</a>
+            <a href="/presentation/About/about" th:text="#{ACERCA_DE}">Acerca de ...</a>
         </div>
         <th:block th:if="${session.usuario != null}">
             <div>
@@ -34,12 +34,24 @@
                 <span>&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;</span>
                 <a href="/presentation/proveedor/logout">Logout</a>
+
+
             </div>
         </th:block>
         <th:block th:unless="${session.usuario != null}">
             <div>
-                <a href="/">Login</a>
+                <a href="/" th:text="#{LOGIN}">Login</a>
             </div>
+            <div class="Idiomas">
+<!--                <img src="/Imagenes/Idiomas.png" alt="Idiomas" class="IdiomasI">-->
+                <select onchange="location = this.value;">
+<!--                    <option value="" th:text="#{Idioma}">Idiomas (Languages)</option>-->
+                    <option value="?lang=es" th:text="#{Espanol}">Español(Spanish)</option>
+                    <option value="?lang=en" th:text="#{Ingles}">Inglés(English)</option>
+                    <option value="?lang=pr" th:text="#{Portugues}">Francés(French)</option>
+                </select>
+            </div>
+
         </th:block>
     </nav>
 </header>
